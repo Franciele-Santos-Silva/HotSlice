@@ -33,7 +33,7 @@ STATUS_PEDIDOS = (
 )
 
 id = Colum("id", Integer, primary_key=True, autoincrement=True);
-status = Colum("status", String);
+status = Colum("status", ChoiceType(choices = STATUS_PEDIDOS));
 usuario = Colum("usuario", String, ForeignKey("usuarios.id"));
 preco = Colum("preco", Float );
 
