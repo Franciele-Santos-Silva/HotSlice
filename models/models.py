@@ -59,3 +59,4 @@ def __init__(self, quantidade, sabor, tamanho, preco_unitario, pedido):
     self.tamanho = tamanho
     self.preco_unitario = preco_unitario
     self.pedido = pedido
+    
