@@ -3,3 +3,4 @@
 <!-- uvicorn main:app --reload -->
 
 <!-- alembic revision --autogenerate -m "remover adimin" -->
+<!-- alembic upgrade head -->
