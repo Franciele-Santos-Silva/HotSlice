@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, HTTPException
 from models import Usuario
 from dependecies import pegar_sessao
 from main import bcrypt_context
@@ -13,10 +13,10 @@ async def home():
 async def criar_conta(email: str, senha: str, nome: str, session = Depends(pegar_sessao)):
     usuario = session.query(Usuario).filter(Usuario.email == email).all()
     if usuario:
-        return {"mensagem": "Email já cadastrado"}
+        raise HTTPException(status_code=400, detail="Já existe uma conta com esse e-mail")
     else:
         senha_criptografada = bcrypt_context.hash(senha)
         novo_usuario = Usuario(nome, email, senha_criptografada)
         session.add(novo_usuario)
         session.commit()
-        return {"mensagem": "Conta criada com sucesso"}
+        return {"mensagem": f"Usuário {email} cadastrado com sucesso"}
