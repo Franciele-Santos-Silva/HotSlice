@@ -16,7 +16,9 @@ async def criar_conta(email: str, senha: str, nome: str):
     if usuario:
         return {"mensagem": "Email já cadastrado"}
     else:
-        novo_usuario =Usuario(nome, email, senha)
+        novo_usuario = Usuario(nome, email, senha)
         session.add(novo_usuario)
         session.commit()
         return {"mensagem": "Conta criada com sucesso"}
+    
+    
