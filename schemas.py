@@ -11,7 +11,7 @@ class UsuarioSchema(BaseModel):
         class Config:
             from_attributes = True
 
-class PedidosSchemas(BaseModel):
+class PedidoSchema(BaseModel):
         usuario: int
         status: Optional[str]
         preco: Optional[float]
