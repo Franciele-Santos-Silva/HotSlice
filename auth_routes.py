@@ -7,6 +7,10 @@ from sqlalchemy.orm import Session
 
 auth_router = APIRouter(prefix="/auth", tags=["auth"])
 
+def criar_token(id_usuario):
+    token = f'scnjdkjvckjvkjeroalkv{id_usuario}'
+    return token
+
 @auth_router.get("/")
 async def home():
     return {"mensagem": "Você acessou a rota de autenticação", "autenticado": False}
@@ -28,3 +32,12 @@ async def login(login_schema: LoginSchema, session: Session = Depends(pegar_sess
     usuario = session.query(Usuario).filter(Usuario.email == login_schema.email).first()
     if not usuario:
         raise HTTPException(status_code= 400, datail= "Usuário não encontrado")
+    else:
+        access_token =criar_token(usuario.id)
+        return {
+
+            "acess_token": access_token, 
+            'token_type': "bearer"
+
+             }
+
