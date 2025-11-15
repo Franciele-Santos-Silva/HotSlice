@@ -17,7 +17,7 @@ alembic/versions/*
 
 # IDE
 .vscode/
-.idea/
+.idea/ 
 *.swp
 *.swo
 
