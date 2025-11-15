@@ -8,7 +8,7 @@ venv/
 .venv/
 
 # Banco de dados
-bancodb
+banco.db
 *.db
 *.sqlite3
 
