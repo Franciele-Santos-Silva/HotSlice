@@ -66,7 +66,6 @@ async def login(login_schema: LoginSchema, session: Session = Depends(pegar_sess
 
 @auth_router.get("/refresh")
 async def use_refresh_token(usuario: Usuario = Depends(verificar_token)):
-    usuario = verificar_token(token)
     access_token = criar_token(usuario.id)
     return {
         "access_token": access_token,
